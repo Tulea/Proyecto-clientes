@@ -92,19 +92,4 @@ label_check=Label(frame3,text='Chequeado')
 label_check.grid(row=6,column=0,sticky='e',padx=20,pady=20)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-root.mainloop()
+#root.mainloop()

@@ -194,5 +194,4 @@ botonbuscar.grid(row=1,column=1,sticky='e',padx=10,pady=10)
 botonmodificar=tkinter.Button(frame2, text='Modificar', command=actualizar)
 botonmodificar.grid(row=1,column=2,sticky='e',padx=10,pady=10)
 
-
 root.mainloop()

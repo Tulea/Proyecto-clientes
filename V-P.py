@@ -3,6 +3,7 @@ from tkinter import messagebox
 
 
 
+
 raiz=Tk()
 
 raiz.title('By_Tulea')
@@ -19,6 +20,8 @@ Label(frame,text='Programa Control De Clientes',font=(12)).place(x=280,y=20)
 #aqui va <<<imagen
 def E_C():
     print('todo va bien')
+    from Cobro import root as cobro_root
+    cobro_root.mainloop()
     #*****************************************************************
 
 
