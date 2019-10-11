@@ -20,11 +20,12 @@ Label(frame,text='Programa Control De Clientes',font=(12)).place(x=280,y=20)
 #aqui va <<<imagen
 def E_C():
     print('todo va bien')
+    # poner las llamadas aqui
     from Cobro import root as cobro_root
     cobro_root.mainloop()
     #*****************************************************************
 
-
+# puedes crear mas llamadas
 boton_client=Button(frame,text='Gestionar Clientes',width=3,command=E_C)
 boton_client.place(relx=0.2, rely=0.2,relwidth=0.2, relheight=0.1)
 #boton_client.pack()
