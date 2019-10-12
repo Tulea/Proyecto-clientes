@@ -2,14 +2,80 @@ import sqlite3
 from tkinter import *
 from tkinter import messagebox
 
-conexion=sqlite3.connect("ControlClient")
+conexion = sqlite3.connect("Base de Datos")
 cursor=conexion.cursor()
+
+
+def pp():
+    conexion = sqlite3.connect('Base de Datos')
+    cursor = conexion.cursor()
+    try:
+        cursor.execute("SELECT * FROM CLIENTES WHERE zona=")
+        client2 = cursor.fetchall()
+        for i in client2:
+            if i == dato_z.get():
+                messagebox.showinfo('byTulea', 'Zona correcta')
+        root2.destroy()
+    except:
+        messagebox.showinfo('byTulea', 'la Zona no existe')
+
+
+root2 = Tk()
+root2.title('Cobrando')
+root2.geometry('250x150')
+dato_z = StringVar()
+dato_FH = StringVar()
+label_zona2 = Label(root2, text='ingrese zona :')
+label_zona2.grid(row=0, column=0, sticky='e', padx=10, pady=10)
+label_fechaactu = Label(root2, text='ingrese fecha :')
+label_fechaactu.grid(row=1, column=0, sticky='e', padx=10, pady=10)
+cuadroZ = Entry(root2, textvariable=dato_z)
+cuadroZ.grid(row=0, column=1, padx=10, pady=10)
+cuadrofec = Entry(root2, textvariable=dato_FH)
+cuadrofec.grid(row=1, column=1, padx=10, pady=10)
+
+boton_ok = Button(root2, text='Ok', command=pp)
+boton_ok.grid(row=3, column=1, sticky='w', padx=10, pady=10)
+
+root2.mainloop()
+
+dato_zona = dato_z.get()
+fecha_act = dato_FH.get()
+
+conexion = sqlite3.connect('Base de Datos')
+cursor = conexion.cursor()
+
+
 
 
 root=Tk()
 root.title('Cobrando')
 root.geometry('350x500')
 root.config(bg='Gray')
+
+
+def ok():
+    conexion = sqlite3.connect('Base de Datos')
+    cursor = conexion.cursor()
+
+    cursor.execute("SELECT * FROM CLIENTES WHERE codigo=" + codigo.get())
+    client = cursor.fetchall()
+
+    for user in client:
+        codigo.set(user[0])
+        dato_c.set(user[1])
+        dato_s.set(user[2])
+        dato_D.set(user[3])
+        dato_N.set(user[4])
+        dato_v.set(user[5])
+        dato_ub.set(user[6])
+        observacion.insert(1.0, user[7])
+
+    conexion.commit()
+
+
+
+
 
 def abonarc():
 	valor=messagebox.askquestion("Confirmar abono","abonar ?")
@@ -35,14 +101,12 @@ frame3.pack(ipadx=150,expand=True)
 
 
 #----------------------------------------
-dato_c='01'
-dato_N='michael'
-dato_D='Heredia'
-dato_s=10000
-dato_ub='27/9/2019'
-dato_factual='11/10/2019'
+dato_c = StringVar()
+dato_N = StringVar()
+dato_D = StringVar()
+dato_ub = StringVar()
 dato_check='x'
-
+dato_v = StringVar()
 
 label_c=Label(frame3,text=dato_D)
 label_c.grid(row=1,column=1,sticky='e',padx=10,pady=10)
@@ -53,7 +117,7 @@ label_n.grid(row=2,column=1,sticky='e',padx=10,pady=10)
 label_d=Label(frame3,text=dato_D)
 label_d.grid(row=3,column=1,sticky='e',padx=10,pady=10)
 
-label_s=Label(frame3,text=dato_s)
+label_s = Label(frame3, text=dato_zona)
 label_s.grid(row=4,column=1,sticky='e',padx=10,pady=10)
 
 label_ub=Label(frame3,text=dato_ub)
@@ -103,8 +167,8 @@ cuadro_abon.grid(row=9,column=1,padx=5,pady=5)
 cuadro_abon.config(justify='right')
 boton_abonar=Button(frame3, text='Abonar', command=abonarc)
 boton_abonar.grid(row=9,column=2,sticky='e',padx=10,pady=10)
-#boton_ok=Button(frame3, text='Ok',) #command=)
-#boton_ok.grid(row=8,column=3,sticky='e',padx=10,pady=10)
+boton_ok = Button(frame3, text='Ok', )  # command=)
+boton_ok.grid(row=8, column=2, sticky='e', padx=10, pady=10)
 
 boton_venta=Button(frame3, text='Venta',) #command=)
 boton_venta.grid(row=10,column=0,sticky='e',padx=10,pady=10)
