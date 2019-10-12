@@ -18,24 +18,28 @@ frame.rowconfigure(5, weight=5)
 frame.rowconfigure(5, weight=5)
 Label(frame,text='Programa Control De Clientes',font=(12)).place(x=280,y=20)
 #aqui va <<<imagen
-def E_C():
+def G_C():
     print('todo va bien')
     # poner las llamadas aqui
-    from Cobro import root as cobro_root
-    cobro_root.mainloop()
+    from G_C import root as G_C_root
+    G_C_root.mainloop()
+
+def cobro_func():
+    from Cobro import root as Cobro_root
+    Cobro_root.mainloop()
     #*****************************************************************
 
 # puedes crear mas llamadas
-boton_client=Button(frame,text='Gestionar Clientes',width=3,command=E_C)
+boton_client=Button(frame,text='Gestionar Clientes',width=3,command=G_C)
 boton_client.place(relx=0.2, rely=0.2,relwidth=0.2, relheight=0.1)
 #boton_client.pack()
-boton_zona=Button(frame,text='Zonas',width=3,command=E_C)
+boton_zona=Button(frame,text='Zonas',width=3,command=G_C)
 boton_zona.place(relx=0.6, rely=0.8,relwidth=0.2, relheight=0.1)
 #boton_zona.pack()
-boton_cobro=Button(frame,text='Check Cobro',width=3,command=E_C)
+boton_cobro=Button(frame,text='Check Cobro',width=3,command=cobro_func)
 boton_cobro.place(relx=0.6, rely=0.2,relwidth=0.2, relheight=0.1)
 #boton_cobro.pack()
-boton_cobros=Button(frame,text='Ver Cobros Anteriores',width=3,command=E_C)
+boton_cobros=Button(frame,text='Ver Cobros Anteriores',width=3,command=G_C)
 boton_cobros.place(relx=0.2, rely=0.8,relwidth=0.2, relheight=0.1)
 
 
