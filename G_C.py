@@ -5,6 +5,7 @@ import sqlite3
 
 root=tkinter.Tk()
 root.title('Gestion Clientes')
+
 def conexionbbdd():
 	conexion=sqlite3.connect("controlClient_BYTulea")
 	cursor=conexion.cursor()
@@ -21,12 +22,10 @@ def conexionbbdd():
 			ult_abono VARCHAR (20) PRIMARY KEY,
 			DESCRIBCION VARCHAR(100))
 			''')
-		MESSAGEBOX.SHOWINFO("ByTulea","la base de datos se creo correctamente")
+		MESSAGEBOX.showinfo("ByTulea","la base de datos se creo correctamente")
 	except:
 		messagebox.showwarning("ByTulea","La base de datos ya existe")
 
-
-# 1111
 
 
 def salirapp():
